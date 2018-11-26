@@ -1,4 +1,20 @@
 # picarUI
+## Instalar
+1. Descargar/clonar codigo
+2. Correr comando 
+```bash
+  npm install
+```
+3. Listo
+
+## Correr
+Correr el comando
+```bash
+  npm start
+```
+Ahora el serivicio está corriendo en el puerto 80, para abrir el app solo hay que navegar al IP del raspberryPI.
+Podría dar error si el puerto 80 ya está corriendo.
+
 ## API
 | Metodo                  | Uso y función                                                                                             |
 |-------------------------|-----------------------------------------------------------------------------------------------------------|
