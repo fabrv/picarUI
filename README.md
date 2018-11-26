@@ -1,6 +1,6 @@
 # picarUI
 Monitor de LineFollower de piCAR-S
-<img src="capture.png" alt="capture" width="300"/>
+<img src="capture.PNG" alt="capture" width="300"/>
 ## Instalar
 1. Descargar/clonar codigo
 2. Correr comando 
