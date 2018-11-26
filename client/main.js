@@ -1,14 +1,16 @@
-const game = io()
+const app = io()
 let sensorArray = [0,0,0,0,0]
 function socketEvents(){
   console.log('test')
-  game.on('sensors', (data)=>{
+  app.on('sensors', (data)=>{
     console.log(data)
     setChartVals(data)
+    setDirection()
   })
 
-  game.on('speed', (data)=>{
+  app.on('speed', (data)=>{
     console.log(data)
+    document.getElementById('speed').innerHTML = data
   })
 }
 
@@ -30,5 +32,20 @@ function setChartVals(data){
 }
 
 function setDirection(){
-  
+  if (sensorArray[0] == 1 && sensorArray[1] == 1){
+    document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
+  }else if (sensorArray[1] == 1 && sensorArray[2] == 1){
+    document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
+  }else if (sensorArray[3] == 1 && sensorArray[2] == 1){
+    document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
+  }else if (sensorArray[3] == 1 && sensorArray[4] == 1){
+    document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
+  }else if (sensorArray[2] == 1){
+    document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
+  }
+}
+
+function onOff(cb){
+  console.log(cb.checked)
+  app.emit('run-state', cb.checked)
 }

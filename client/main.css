@@ -120,7 +120,8 @@ input:checked + .slider:before {
   font-family: 'Niramit-Bold';
 }
 
-.direction{
+#direction-arrow{
   font-size: 72px;
   color: #2196F3;
+  transition: transform .2s;
 }

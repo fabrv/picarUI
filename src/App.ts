@@ -11,6 +11,8 @@ class App{
   public server: Server
   public io: SocketIO.Server
   public app: express.Application
+  public on: boolean = false
+
   constructor () {
     // App Express
     this.app = express()
@@ -44,6 +46,11 @@ class App{
       this.io.emit('speed', JSON.parse(req.params.speed))
 
       res.status(200).send({'status': 200, 'data': req.params.speed})
+    })
+
+    router.get('/on', (req: express.Request, res: express.Response) => {
+      console.log(chalk.cyan(`Pedido de encendido, ${this.on}`))
+      res.status(200).send(this.on)
     })
 
     // Set router location
