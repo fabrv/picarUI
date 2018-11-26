@@ -8,4 +8,8 @@ app.server.listen(port, '0.0.0.0', (err: any) => {
   }
   console.log(`Servidor está en puerto ${port}`)
 
+  app.io.on('connect', (socket: SocketIO.Socket) => {
+    let handshake = socket.handshake;
+    console.log(`Nuevo cliente, ${handshake.address}`);
+  })
 })

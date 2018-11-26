@@ -1,6 +1,7 @@
 import { createServer, Server } from 'http'
 import express from 'express'
 import cors from 'cors'
+import socketIo from 'socket.io'
 import * as path from 'path'
 
 import chalk from 'chalk';
@@ -8,6 +9,7 @@ import chalk from 'chalk';
 
 class App{  
   public server: Server
+  public io: SocketIO.Server
   public app: express.Application
   constructor () {
     // App Express
@@ -18,8 +20,9 @@ class App{
     this.mountRoutes()
     // Http Server
     this.server = createServer(this.app)
+    // Socket.io Server
+    this.io = socketIo(this.server)
   }
-
 
   private mountRoutes(): void {
     const router: any = express.Router()
@@ -29,11 +32,17 @@ class App{
 
     router.post('/sensors/:data', (req: express.Request, res: express.Response) => {
       console.log(chalk.cyan(`Mapa sensonres ${req.params.data}`))
-      res.status(200).send({'status': 200, 'data': req.params.data})
+
+      this.io.emit('sensors', JSON.parse(req.params.data))
+
+      res.status(200).send({'status': 200, 'data': req.params.data})      
     })
 
     router.post('/speed/:speed', (req: express.Request, res: express.Response) => {
       console.log(chalk.cyan(`Velocidad del carro ${req.params.speed}`))
+
+      this.io.emit('speed', JSON.parse(req.params.speed))
+
       res.status(200).send({'status': 200, 'data': req.params.speed})
     })
 
