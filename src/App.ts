@@ -31,7 +31,7 @@ class App{
     router.use(cors())
 
     router.post('/sensors/:data', (req: express.Request, res: express.Response) => {
-      console.log(chalk.cyan(`Mapa sensonres ${req.params.data}`))
+      console.log(chalk.cyan(`Valores sensores ${req.params.data}`))
 
       this.io.emit('sensors', JSON.parse(req.params.data))
 

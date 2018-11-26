@@ -1,3 +1,17 @@
+@font-face{
+  font-family: 'Niramit-Regular';
+  src: url(fonts/Niramit/Niramit-Regular.ttf);
+}
+@font-face{
+  font-family: 'Niramit-Bold';
+  src: url(fonts/Niramit/Niramit-Bold.ttf);
+}
+
+body{
+  font-family: 'Niramit-Regular';
+  text-align: center;
+}
+
 /* SWITCH */
 .switch {
   position: relative;
@@ -55,4 +69,58 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+/* CHARTS */
+.sensor-array{
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+.sensor-array li{
+  display: inline-block;
+}
+.sensor{
+  height: 200px;
+  width: 70px;
+  position: relative;
+}
+.sensor-data{
+  width: 100%;
+  height: 2%;
+  position: absolute;
+  bottom: 0;  
+  transition: height .2s;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 5px;
+}
+
+.sensor-value{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: 'Niramit-Bold';
+  transition: all .2s;
+}
+
+.threshold-line{
+  width: 400px;
+  border: dashed 2px #da4949;  
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 100;
+}
+
+.sensor-threshold{
+  font-family: 'Niramit-Bold';
+}
+
+.direction{
+  font-size: 72px;
+  color: #2196F3;
 }
