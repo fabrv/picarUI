@@ -1,4 +1,5 @@
 # picarUI
+![App screenshot](capture.png)
 ## Instalar
 1. Descargar/clonar codigo
 2. Correr comando 
