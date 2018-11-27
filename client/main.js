@@ -32,23 +32,23 @@ function setChartVals(data){
 }
 
 function setDirection(){
-  if(sensorArray[0] == 1 && sensorArray[1] == 0){
+  if(sensorArray[0] == 0 && sensorArray[1] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
-  }else if(sensorArray[4] == 1 && sensorArray[3] == 0){
+  }else if(sensorArray[4] == 0 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
-  }else if(sensorArray[0] == 1 && sensorArray[1] == 1){
+  }else if(sensorArray[0] == 0 && sensorArray[1] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-30deg)'
-  }else if(sensorArray[3] == 1 && sensorArray[4] == 1){
+  }else if(sensorArray[3] == 0 && sensorArray[4] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(30deg)'
-  }else if(sensorArray[1] == 1 && sensorArray[0] == 0 && sensorArray[2] == 0){
+  }else if(sensorArray[1] == 0 && sensorArray[0] == 1 && sensorArray[2] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
-  }else if(sensorArray[3] == 1 && sensorArray[2] == 0 && sensorArray[4] == 0){
+  }else if(sensorArray[3] == 0 && sensorArray[2] == 1 && sensorArray[4] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
-  }else if(sensorArray[1] == 1 && sensorArray[2] == 1){
+  }else if(sensorArray[1] == 0 && sensorArray[2] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-3deg)'
-  }else if(sensorArray[2] == 1 && sensorArray[3] == 1){
+  }else if(sensorArray[2] == 0 && sensorArray[3] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(3deg)'
-  }else if(sensorArray[2] == 1 && sensorArray[1] == 0 && sensorArray[3] == 0){
+  }else if(sensorArray[2] == 0 && sensorArray[1] == 1 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
   }
 
