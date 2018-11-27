@@ -20,10 +20,10 @@ function setChartVals(data){
   let sensorTreshold = document.querySelectorAll('.sensor-threshold')
   for (let i = 0; i < sensorsData.length; i++){
     if (data[i] >= 350){
-      sensorTreshold[i].innerHTML = 1
+      sensorTreshold[i].innerHTML = 0
       sensorArray[i] = 1
     }else{
-      sensorTreshold[i].innerHTML = 0
+      sensorTreshold[i].innerHTML = 1
       sensorArray[i] = 0
     }
     sensorsData[i].style.height = ((data[i]/600)*100) + '%'
