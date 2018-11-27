@@ -1,7 +1,7 @@
 import app from './App'
 import chalk from 'chalk';
 
-const port: any = process.env.PORT || 80
+const port: any = process.env.PORT || 3000
 
 app.server.listen(port, '0.0.0.0', (err: any) => {
   if (err){
