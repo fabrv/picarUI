@@ -18,8 +18,9 @@ Ahora el serivicio está corriendo en el puerto 80, para abrir el app solo hay q
 Podría dar error si el puerto 80 ya está corriendo.
 
 ## API
-| Metodo                  | Uso y función                                                                                             |
-|-------------------------|-----------------------------------------------------------------------------------------------------------|
-| **POST** /sensors/:data | Hacer un pedido POST así `<ip>/sensors/[200,200,200,200,200]`, la variable tiene que estar en ese formato |
-| **POST** /speed/:data   | Hacer un pedido POST así `<ip>/speed/200`, la variable tiene que ser un entero                            |
-| **GET** /on             | Hacer un pedido GET así `<ip>/on`, esto retorna un buleano si hay que iniciar o terminar el proceso       |
+| Metodo                  | Uso y función                                                                                                           |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **POST** /sensors/:data | Hacer un pedido POST así `<ip>/sensors/[200,200,200,200,200]`, la variable tiene que estar en ese formato               |
+| **POST** /speed/:data   | Hacer un pedido POST así `<ip>/speed/200`, la variable tiene que ser un entero                                          |
+| **GET** /on             | Hacer un pedido GET así `<ip>/on`, esto retorna un buleano si hay que iniciar o terminar el proceso                     |
+| **POST** /data/:data    | Hacer un pedido POST así `<ip:port>/data/{speed:23,sensors:[200,200,200,200,200]}`. Hace los primeros dos posts en un 1 |
