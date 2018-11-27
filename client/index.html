@@ -9,13 +9,13 @@
 </head>
 <body onload="socketEvents()">
   <div class="header">
-    Encedido
+    Start
     <label class="switch">
       <input type="checkbox" onclick='onOff(this);'>
       <span class="slider round"></span>
     </label>
 
-    Velocidad
+    Speed
     <span><b id="speed">1000</b></span>
   </div>  
   <div class="content">
@@ -73,10 +73,13 @@
 
   <div class="content">
     <h1>Track Trace</h1>
+    <canvas id="car-map" width="500" height="500"></canvas>
   </div>
 
   <div class="content">
     <h1>Laps</h1>
+    <input placeholder="Max laps" min="0" max="100" id="lap-max"type="number">
+    <p>Lap count <b id="lap-count"></b></p>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>

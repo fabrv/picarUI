@@ -1,5 +1,7 @@
 const app = io()
 let sensorArray = [0,0,0,0,0]
+let laps = 0
+let lastPoint = [25,25]
 function socketEvents(){
   console.log('test')
   /*app.on('sensors', (data)=>{
@@ -17,6 +19,7 @@ function socketEvents(){
     console.log(data)
     setChartVals(data.sensors)
     setDirection()
+    readLap()
     document.getElementById('speed').innerHTML = data.speed
   })
 }
@@ -39,8 +42,16 @@ function setChartVals(data){
 }
 
 function setDirection(){
+  let canvas = document.getElementById('canvas')
+  let ctx = c.getContext('2d')
+  ctx.moveTo(lastPoint[0],lastPoint[1])
+
+
   if(sensorArray[0] == 0 && sensorArray[1] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
+    lastPoint[0] += 10
+    lastPoint[1] -= 10
+    ctx.lineTo(lastPoint[0],lastPoint[1])
   }else if(sensorArray[4] == 0 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
   }else if(sensorArray[0] == 0 && sensorArray[1] == 0){
@@ -57,21 +68,14 @@ function setDirection(){
     document.getElementById('direction-arrow').style.transform = 'rotate(3deg)'
   }else if(sensorArray[2] == 0 && sensorArray[1] == 1 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
-  }
+  }  
+}
 
-  /*
-  if ((sensorArray[0] == 1 && sensorArray[1] == 1) || sensorArray[0] == 1){
-    document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
-  }else if (sensorArray[1] == 1 && sensorArray[2] == 1){
-    document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
-  }else if (sensorArray[3] == 1 && sensorArray[2] == 1){
-    document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
-  }else if (sensorArray[3] == 1 && sensorArray[4] == 1){
-    document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
-  }else if (sensorArray[2] == 1){
-    document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
+function readLap(){
+  if (sensorArray[4] == 1 && sensorArray[0] == 1 && sensorArray[1] == 0 && sensorArray[2] == 0 && sensorArray[3] == 0){
+    laps+=1
+    document.getElementById('lap-count').innerHTML = laps
   }
-  */
 }
 
 function onOff(cb){
