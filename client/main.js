@@ -2,7 +2,7 @@ const app = io()
 let sensorArray = [0,0,0,0,0]
 function socketEvents(){
   console.log('test')
-  app.on('sensors', (data)=>{
+  /*app.on('sensors', (data)=>{
     console.log(data)
     setChartVals(data)
     setDirection()
@@ -10,7 +10,14 @@ function socketEvents(){
 
   app.on('speed', (data)=>{
     console.log(data)
-    document.getElementById('speed').innerHTML = data
+    document.getEleme0ntById('speed').innerHTML = data
+  })*/
+
+  app.on('data', (data)=>{
+    console.log(data)
+    setChartVals(data.sensors)
+    setDirection()
+    document.getElementById('speed').innerHTML = data.speed
   })
 }
 

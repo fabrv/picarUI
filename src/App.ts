@@ -48,6 +48,14 @@ class App{
       res.status(200).send({'status': 200, 'data': req.params.speed})
     })
 
+    router.post('/data/:data',  (req: express.Request, res: express.Response) => {
+      console.log(chalk.cyan(`Velocidad y data sensores ${req.params.data}`))
+
+      this.io.emit('data', JSON.parse(req.params.data))
+
+      res.status(200).send({'status': 200, 'data': req.params.data})
+    })
+
     router.get('/on', (req: express.Request, res: express.Response) => {
       console.log(chalk.cyan(`Pedido de encendido, ${this.on}`))
       res.status(200).send(this.on)
