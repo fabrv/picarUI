@@ -110,7 +110,7 @@ input:checked + .slider:before {
   width: 400px;
   border: dashed 2px #da4949;  
   position: absolute;
-  top: 42%;
+  top: 33%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   z-index: 100;
