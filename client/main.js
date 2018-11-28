@@ -1,9 +1,9 @@
 const app = io()
 let sensorArray = [0,0,0,0,0]
 let laps = 0
-let lastPoint = [250,250]
+let lastPoint = [100,200]
 let lastAngle = 0
-let radius = 10
+let radius = 3
 let threshold = 400
 
 let maxLaps = 100
@@ -53,28 +53,28 @@ function setDirection(){
   console.log(sensorArray)
   if(sensorArray[0] == 0 && sensorArray[1] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
-    lastAngle -= (1/18)*Math.PI
+    lastAngle -= (1/108)*Math.PI
   }else if(sensorArray[4] == 0 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
-    lastAngle += (1/18)*Math.PI
+    lastAngle += (1/108)*Math.PI
   }else if(sensorArray[0] == 0 && sensorArray[1] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-30deg)'
-    lastAngle -= (1/36)*Math.PI
+    lastAngle -= (1/216)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[4] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(30deg)'
-    lastAngle += (1/36)*Math.PI
+    lastAngle += (1/216)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[0] == 1 && sensorArray[2] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
-    lastAngle -= (1/54)*Math.PI
+    lastAngle -= (1/324)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[2] == 1 && sensorArray[4] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
-    lastAngle += (1/54)*Math.PI
+    lastAngle += (1/324)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[2] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-3deg)'
-    lastAngle -= (1/360)*Math.PI
+    lastAngle -= (1/2160)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[3] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(3deg)'
-    lastAngle += (1/360)*Math.PI
+    lastAngle += (1/2160)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[1] == 1 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
     lastAngle = lastAngle
