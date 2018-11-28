@@ -1,7 +1,7 @@
 const app = io()
 let sensorArray = [0,0,0,0,0]
 let laps = 0
-let lastPoint = [100,100]
+let lastPoint = [250,250]
 let lastAngle = 0
 let radius = 1
 function socketEvents(){
