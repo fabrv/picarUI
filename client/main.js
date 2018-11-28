@@ -3,8 +3,10 @@ let sensorArray = [0,0,0,0,0]
 let laps = 0
 let lastPoint = [250,250]
 let lastAngle = 0
-let radius = 1
+let radius = 5
 let threshold = 400
+
+let maxLaps = 100
 function socketEvents(){
   console.log('test')
   /*app.on('sensors', (data)=>{
@@ -84,10 +86,17 @@ function setDirection(){
 }
 
 function readLap(){
-  if (sensorArray[4] == 1 && sensorArray[0] == 1 && sensorArray[1] == 0 && sensorArray[2] == 0 && sensorArray[3] == 0){
+  if (sensorArray[4] == 0 && sensorArray[0] == 0 && sensorArray[1] == 1 && sensorArray[2] == 1 && sensorArray[3] == 1){
     laps+=1
+    console.log(`Nueva vuelta: ${laps}`)
     document.getElementById('lap-count').innerHTML = laps
+    if (laps > maxLaps){
+      onOff({checked: false})
+    }
   }
+}
+function changeMaxLap(obj){
+  maxLaps = obj.value
 }
 
 function onOff(cb){
