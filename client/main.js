@@ -4,6 +4,7 @@ let laps = 0
 let lastPoint = [250,250]
 let lastAngle = 0
 let radius = 1
+let threshold = 400
 function socketEvents(){
   console.log('test')
   /*app.on('sensors', (data)=>{
@@ -31,7 +32,7 @@ function setChartVals(data){
   let sensorValue = document.querySelectorAll('.sensor-value')
   let sensorTreshold = document.querySelectorAll('.sensor-threshold')
   for (let i = 0; i < sensorsData.length; i++){
-    if (data[i] >= 350){
+    if (data[i] > threshold){
       sensorTreshold[i].innerHTML = 0
       sensorArray[i] = 1
     }else{
