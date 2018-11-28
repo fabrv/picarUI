@@ -14,9 +14,6 @@
       <input type="checkbox" onclick='onOff(this);'>
       <span class="slider round"></span>
     </label>
-
-    Speed
-    <span><b id="speed">0</b></span>
   </div>  
   <div class="content">
     <h1>Sensor data</h1>    
@@ -64,16 +61,20 @@
         </div>
       </li>
     </ul>
-  </div>
 
-  <div class="content">
     <h1>Direction</h1>
     <div id="direction-arrow">🡑</div>
+    <p>
+      Speed
+      <span><b id="speed">0</b></span>
+    </p>
   </div>
 
-  <div class="content">
-    <h1>Track Trace</h1>
-    <canvas id="car-map" width="500" height="500"></canvas>
+  <div class="content" id="map-cnt">
+    <h1>Track Trace</h1>    
+    <a class="btn btn-danger" onclick="clearCanvas()">Clear</a>
+    <a class="btn btn-primary" onclick="setLastPos()">Set initial point <span id="init-pos">(0,200)</span></a>
+    <canvas onclick="getRelativeCoords(event)" id="car-map" width="500" height="500"></canvas>
   </div>
 
   <div class="content">

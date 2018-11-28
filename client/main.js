@@ -1,10 +1,13 @@
 const app = io()
 let sensorArray = [0,0,0,0,0]
 let laps = 0
-let lastPoint = [100,200]
+let lastPoint = [0,200]
 let lastAngle = 0
 let radius = 3
 let threshold = 400
+let readings = 4
+let n = 0
+let pPoint = [0,200]
 
 let maxLaps = 100
 function socketEvents(){
@@ -47,8 +50,8 @@ function setChartVals(data){
 }
 
 function setDirection(){
-  let c = document.getElementById('car-map')
-  let ctx = c.getContext('2d')
+  const c = document.getElementById('car-map')
+  const ctx = c.getContext('2d')
   ctx.moveTo(lastPoint[0],lastPoint[1])
   console.log(sensorArray)
   if(sensorArray[0] == 0 && sensorArray[1] == 1){
@@ -79,10 +82,14 @@ function setDirection(){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
     lastAngle = lastAngle
   }
-  lastPoint[0] += radius*Math.cos(lastAngle)
-  lastPoint[1] += radius*Math.sin(lastAngle)
-  ctx.lineTo(lastPoint[0], lastPoint[1])
-  ctx.stroke()
+  if (n%readings == 0){
+    lastPoint[0] += radius*Math.cos(lastAngle)
+    lastPoint[1] += radius*Math.sin(lastAngle)
+    ctx.lineTo(lastPoint[0], lastPoint[1])
+    ctx.stroke()
+  }
+
+  n += 1
 }
 
 function readLap(){
@@ -102,4 +109,25 @@ function changeMaxLap(obj){
 function onOff(cb){
   console.log(cb.checked)
   app.emit('run-state', cb.checked)
+}
+
+
+function clearCanvas(){
+  const c = document.getElementById('car-map')
+  const context = c.getContext('2d')
+  context.save();
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.clearRect(0, 0, c.width, c.height);
+  context.restore();
+}
+
+function getRelativeCoords(event) {
+  pPoint[0] = event.offsetX;
+  pPoint[1] = event.offsetY;
+  document.getElementById('init-pos').innerHTML = `(${pPoint[0]},${pPoint[1]})`
+  console.log({ x: event.offsetX, y: event.offsetY });
+}
+
+function setLastPos(){
+  lastPoint = pPoint
 }

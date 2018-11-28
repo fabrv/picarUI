@@ -124,6 +124,7 @@ input:checked + .slider:before {
   font-size: 72px;
   color: #2196F3;
   transition: transform .2s;
+  margin: -20px !important;
 }
 
 #lap-max{
@@ -133,7 +134,7 @@ input:checked + .slider:before {
   border-radius: 15px;
   padding: 10px;
   padding-left: 14px;
-  transition: all .3s;
+  transition: all .2s;
   width: 100px;
   font-family: 'Niramit-Regular';
   font-size: 15px;
@@ -147,5 +148,60 @@ input:checked + .slider:before {
   box-shadow: 0 0 0 4px rgba(33, 149, 243, 0.4);
 }
 canvas{
-  border: solid 1px black;
+  /*border: solid 1px black;*/
+  cursor: pointer;
+}
+
+
+/*CONTENT*/
+.content{
+  display: inline-table;
+  margin: 25px;
+  padding: 25px;
+  width: auto;
+  border-radius: 20px;
+  box-shadow: 0 2px 15px 2px rgba(0,0,0,.07);
+}
+
+.content p{
+  margin-bottom: 0;
+}
+.btn{
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: all .2s;
+  font-family: 'Niramit-Bold';
+  font-size: 15px;
+  color: black;
+  letter-spacing: .1em;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.btn:hover{
+  box-shadow: 0 1px 7px 1px rgba(0,0,0,.2);
+}
+.btn:active{
+  box-shadow: 0 0 0 4px rgba(33, 149, 243, 0.4);
+}
+.btn:focus {
+  outline:0;
+}
+
+.btn-primary{
+  background-color: #2196F3;
+  color: white;
+}
+.btn-danger{
+  background-color: #da4949;
+  color: white;
+}
+.btn-danger:active{
+  box-shadow: 0 0 0 4px rgba(218, 73, 73, 0.4);
+}
+
+#map-cnt{
+  width: 600px
 }
