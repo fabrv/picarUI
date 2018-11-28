@@ -22,7 +22,7 @@ function socketEvents(){
     setChartVals(data.sensors)
     setDirection()
     readLap()
-    document.getElementById('speed').innerHTML = data.speed
+    document.getElementById('speed').innerHTML = `data.speed ${cm/s}`
   })
 }
 
