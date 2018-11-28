@@ -79,8 +79,8 @@ function setDirection(){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
     lastAngle = lastAngle
   }
-  lastPoint[0] += Math.floor(radius*Math.cos(lastAngle))
-  lastPoint[1] += Math.floor(radius*Math.sin(lastAngle))
+  lastPoint[0] += radius*Math.cos(lastAngle)
+  lastPoint[1] += radius*Math.sin(lastAngle)
   ctx.lineTo(lastPoint[0], lastPoint[1])
   ctx.stroke()
 }
