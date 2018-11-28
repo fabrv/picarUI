@@ -3,7 +3,7 @@ let sensorArray = [0,0,0,0,0]
 let laps = 0
 let lastPoint = [250,250]
 let lastAngle = 0
-let radius = 5
+let radius = 3
 let threshold = 400
 
 let maxLaps = 100
