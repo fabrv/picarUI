@@ -43,7 +43,7 @@ class App{
     router.post('/speed/:speed', (req: express.Request, res: express.Response) => {
       console.log(chalk.cyan(`Velocidad del carro ${req.params.speed}`))
 
-      this.io.emit('speed', JSON.parse(req.params.speed))
+      this.io.emit('speed', req.params.speed)
 
       res.status(200).send({'status': 200, 'data': req.params.speed})
     })

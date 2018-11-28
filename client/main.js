@@ -1,7 +1,9 @@
 const app = io()
 let sensorArray = [0,0,0,0,0]
 let laps = 0
-let lastPoint = [25,25]
+let lastPoint = [100,100]
+let lastAngle = 0
+let radius = 10
 function socketEvents(){
   console.log('test')
   /*app.on('sensors', (data)=>{
@@ -42,33 +44,42 @@ function setChartVals(data){
 }
 
 function setDirection(){
-  let canvas = document.getElementById('canvas')
+  let c = document.getElementById('car-map')
   let ctx = c.getContext('2d')
   ctx.moveTo(lastPoint[0],lastPoint[1])
-
-
+  console.log(sensorArray)
   if(sensorArray[0] == 0 && sensorArray[1] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
-    lastPoint[0] += 10
-    lastPoint[1] -= 10
-    ctx.lineTo(lastPoint[0],lastPoint[1])
+    lastAngle -= (1/4)*Math.PI
   }else if(sensorArray[4] == 0 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
+    lastAngle += (1/4)*Math.PI
   }else if(sensorArray[0] == 0 && sensorArray[1] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-30deg)'
+    lastAngle -= (1/6)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[4] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(30deg)'
+    lastAngle += (1/6)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[0] == 1 && sensorArray[2] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
+    lastAngle -= (1/9)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[2] == 1 && sensorArray[4] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
+    lastAngle += (1/9)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[2] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-3deg)'
+    lastAngle -= (1/60)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[3] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(3deg)'
+    lastAngle += (1/60)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[1] == 1 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
-  }  
+    lastAngle = lastAngle
+  }
+  lastPoint[0] += Math.floor(radius*Math.cos(lastAngle))
+  lastPoint[1] += Math.floor(radius*Math.sin(lastAngle))
+  ctx.lineTo(lastPoint[0], lastPoint[1])
+  ctx.stroke()
 }
 
 function readLap(){

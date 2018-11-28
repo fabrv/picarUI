@@ -128,21 +128,24 @@ input:checked + .slider:before {
 
 #lap-max{
   border: none;
-  background-color: #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  transition: all .2s;
+  box-shadow: 0 0 0 1px #ccc;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  padding-left: 14px;
+  transition: all .3s;
   width: 100px;
   font-family: 'Niramit-Regular';
+  font-size: 15px;
 }
 #lap-max::placeholder{
-  color: white;
+  color: #a3a3a3;
 }
 #lap-max:focus{
-  background-color:white;
-  box-shadow: 0 0 7px 1px rgba(0,0,0,.3);
+  background-color:white;  
   outline: none;
+  box-shadow: 0 0 0 4px rgba(33, 149, 243, 0.4);
 }
-#lap-max:focus::placeholder{
-  color: #a3a3a3;
+canvas{
+  border: solid 1px black;
 }
