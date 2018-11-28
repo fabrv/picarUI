@@ -3,7 +3,7 @@ let sensorArray = [0,0,0,0,0]
 let laps = 0
 let lastPoint = [250,250]
 let lastAngle = 0
-let radius = 3
+let radius = 10
 let threshold = 400
 
 let maxLaps = 100
@@ -53,28 +53,28 @@ function setDirection(){
   console.log(sensorArray)
   if(sensorArray[0] == 0 && sensorArray[1] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-45deg)'
-    lastAngle -= (1/4)*Math.PI
+    lastAngle -= (1/9)*Math.PI
   }else if(sensorArray[4] == 0 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(45deg)'
-    lastAngle += (1/4)*Math.PI
+    lastAngle += (1/9)*Math.PI
   }else if(sensorArray[0] == 0 && sensorArray[1] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-30deg)'
-    lastAngle -= (1/6)*Math.PI
+    lastAngle -= (1/18)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[4] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(30deg)'
-    lastAngle += (1/6)*Math.PI
+    lastAngle += (1/18)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[0] == 1 && sensorArray[2] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(-20deg)'
-    lastAngle -= (1/9)*Math.PI
+    lastAngle -= (1/27)*Math.PI
   }else if(sensorArray[3] == 0 && sensorArray[2] == 1 && sensorArray[4] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(20deg)'
-    lastAngle += (1/9)*Math.PI
+    lastAngle += (1/27)*Math.PI
   }else if(sensorArray[1] == 0 && sensorArray[2] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(-3deg)'
-    lastAngle -= (1/60)*Math.PI
+    lastAngle -= (1/180)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[3] == 0){
     document.getElementById('direction-arrow').style.transform = 'rotate(3deg)'
-    lastAngle += (1/60)*Math.PI
+    lastAngle += (1/180)*Math.PI
   }else if(sensorArray[2] == 0 && sensorArray[1] == 1 && sensorArray[3] == 1){
     document.getElementById('direction-arrow').style.transform = 'rotate(0deg)'
     lastAngle = lastAngle
