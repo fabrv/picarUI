@@ -115,6 +115,10 @@ function onOff(cb){
   app.emit('run-state', cb.checked)
 }
 
+function turbo(cb){
+  console.log('Turbo', cb.checked)
+  app.emit('turbo-state', cb.checked)
+}
 
 function clearCanvas(){
   const c = document.getElementById('car-map')
