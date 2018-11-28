@@ -8,6 +8,7 @@ let threshold = 400
 let readings = 4
 let n = 0
 let pPoint = [0,200]
+let lastSensor = []
 
 let maxLaps = 100
 function socketEvents(){
@@ -93,7 +94,9 @@ function setDirection(){
 }
 
 function readLap(){
-  if (sensorArray[4] == 0 && sensorArray[0] == 0 && sensorArray[1] == 1 && sensorArray[2] == 1 && sensorArray[3] == 1){
+  console.log('lastSensor', lastSensor);
+  console.log('thisSensor', sensorArray)
+  if (lastSensor[4] == 0 && sensorArray[4] == 1 && lastSensor[0] == 0 && sensorArray[0] == 1 && lastSensor[1] == 1 && lastSensor[2] == 1 && lastSensor[3] == 1){
     laps+=1
     console.log(`Nueva vuelta: ${laps}`)
     document.getElementById('lap-count').innerHTML = laps
@@ -101,6 +104,7 @@ function readLap(){
       onOff({checked: false})
     }
   }
+  lastSensor = JSON.parse(JSON.stringify(sensorArray.valueOf()))
 }
 function changeMaxLap(obj){
   maxLaps = obj.value
@@ -129,5 +133,5 @@ function getRelativeCoords(event) {
 }
 
 function setLastPos(){
-  lastPoint = pPoint
+  lastPoint = pPoint.valueOf()
 }
