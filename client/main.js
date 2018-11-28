@@ -3,7 +3,7 @@ let sensorArray = [0,0,0,0,0]
 let laps = 0
 let lastPoint = [100,100]
 let lastAngle = 0
-let radius = 10
+let radius = 1
 function socketEvents(){
   console.log('test')
   /*app.on('sensors', (data)=>{
